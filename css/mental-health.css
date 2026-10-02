@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; }
+
+.page-header { padding: 40px 48px 0; }
+.page-header h1 { font-size: 28px; margin-bottom: 6px; }
+.page-header p { color: #6c7793; font-size: 14px; }
+
+/* Mood selection card */
+.mood-card { margin: 24px 48px; background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 28px; }
+.mood-card h2 { font-size: 17px; margin-bottom: 20px; }
+
+.mood-buttons { display: flex; gap: 16px; }
+.mood-form { flex: 1; }
+.mood-btn {
+    width: 100%;
+    background: white;
+    border: 2px solid #eaf4fb;
+    border-radius: 16px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+}
+.mood-btn:hover { border-color: #c9ddf0; }
+.mood-btn.selected { border-color: #4a90d9; background: #eaf4fb; }
+.mood-emoji { font-size: 30px; }
+.mood-label { font-size: 13px; font-weight: 600; color: #2c3454; }
+
+.mood-message { margin-top: 20px; background: #f5f8fb; border-radius: 12px; padding: 16px; text-align: center; font-weight: 600; font-size: 14px; }
+
+/* Two column layout */
+.two-col { display: flex; gap: 24px; margin: 0 48px 24px; }
+.panel { flex: 1; background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 24px; }
+.panel h2 { font-size: 16px; margin-bottom: 8px; }
+.panel-subtext { font-size: 13px; color: #6c7793; margin-bottom: 16px; }
+
+/* Week nav (reused look) */
+.week-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.week-nav-btn { background: white; border: 2px solid #eaf4fb; color: #4a90d9; padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 12px; font-weight: 600; }
+.week-nav-btn.disabled { color: #ccc; border-color: #f0f0f0; cursor: not-allowed; }
+.week-range { font-weight: 700; font-size: 13px; }
+
+/* Mood bar chart */
+.mood-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 140px; gap: 10px; margin-top: 8px; }
+.mood-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.mood-day-emoji { font-size: 16px; margin-bottom: 6px; }
+.mood-bar { width: 26px; background: #7fb3e8; border-radius: 6px 6px 0 0; min-height: 4px; }
+.mood-bar-empty { background: #f0f3f8; }
+.mood-day-label { margin-top: 8px; font-size: 11px; color: #6c7793; }
+
+.week-average { margin-top: 18px; background: #f5f8fb; border-radius: 10px; padding: 12px; text-align: center; font-size: 13px; }
+
+/* Breathing exercise */
+.breathing-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.breathing-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: #dceefb;
+    border: 2px solid #a9d6f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #2c3454;
+    font-size: 15px;
+    transition: transform 4s ease-in-out;
+}
+.add-btn { background: #4a90d9; color: white; border: none; padding: 12px 24px; border-radius: 12px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+/* Gratitude journal */
+.panel textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #eaf4fb;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 12px;
+}
+.save-btn-green { background: #4caf7d; color: white; border: none; padding: 11px 22px; border-radius: 10px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+.journal-list { margin-top: 18px; max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 4px; }
+.journal-entry { background: #f5f8fb; border-radius: 10px; padding: 12px 14px; }
+.journal-date { font-size: 11px; color: #6c7793; display: block; margin-bottom: 4px; }
+.journal-entry p { font-size: 13px; line-height: 1.5; }
+.empty-msg { color: #6c7793; font-size: 13px; }
+
+/* Affirmation */
+.affirmation-box { background: #f0ebfb; border-radius: 12px; padding: 18px; text-align: center; font-style: italic; font-size: 14px; color: #4a3f6b; margin-bottom: 14px; line-height: 1.5; }
+
+.wellness-heading { margin-top: 24px; margin-bottom: 12px; font-size: 15px; }
+.wellness-tips { display: flex; flex-direction: column; gap: 8px; }
+.tip { background: #f5f8fb; border-left: 3px solid #4caf7d; padding: 10px 14px; font-size: 13px; border-radius: 0 8px 8px 0; }
+
+/* Crisis banner */
+.crisis-banner { margin: 0 48px 40px; background: linear-gradient(135deg, #fdf0ee, #fce8e6); border-radius: 18px; padding: 24px 28px; }
+.crisis-banner h3 { color: #e05a4f; font-size: 16px; margin-bottom: 4px; }
+.crisis-banner p { font-size: 13px; color: #6c7793; margin-bottom: 16px; }
+.crisis-contacts { display: flex; gap: 40px; font-size: 13px; }
+.crisis-contacts strong { display: block; margin-bottom: 4px; }

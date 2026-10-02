@@ -5,7 +5,7 @@
     <li><a href="home.php" class="<?php echo $activePage === 'home' ? 'active' : ''; ?>">Home</a></li>
     <li><a href="telemedicine.php" class="<?php echo $activePage === 'telemedicine' ? 'active' : ''; ?>">Telemedicine</a></li>
     <li><a href="appointments.php" class="<?php echo $activePage === 'appointments' ? 'active' : ''; ?>">Appointments</a></li>
-    <li><a href="#">Mental Health</a></li>
+    <li><a href="mental-health.php" class="<?php echo $activePage === 'mental-health' ? 'active' : ''; ?>">Mental Health</a></li>
     <li><a href="medications.php" class="<?php echo $activePage === 'medications' ? 'active' : ''; ?>">Medications</a></li>
     <li><a href="#">Community</a></li>
     <li><a href="fitness.php" class="<?php echo $activePage === 'fitness' ? 'active' : ''; ?>">Fitness</a></li>
