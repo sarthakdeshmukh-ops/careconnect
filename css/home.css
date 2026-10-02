@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #2c3454;
+}
+
+
+/* ---------- Hero ---------- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 48px;
+    background: #eaf4fb;
+}
+.hero-text { max-width: 560px; }
+.hero-text h1 { font-size: 42px; margin-bottom: 16px; }
+.hero-text .highlight { color: #4a90d9; }
+.hero-text p { color: #6c7793; margin-bottom: 24px; line-height: 1.6; }
+
+.hero-buttons a {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 12px;
+}
+.btn-primary { background: #4a90d9; color: white; }
+.btn-secondary { background: white; color: #4a90d9; border: 2px solid #4a90d9; }
+
+.hero-icon { font-size: 120px; }
+
+/* ---------- Stats ---------- */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 32px;
+    margin: -30px 48px 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(60,90,130,0.1);
+    position: relative;
+}
+.stat h2 { color: #4a90d9; font-size: 28px; }
+.stat p { color: #6c7793; font-size: 13px; margin-top: 4px; }
+
+/* ---------- Modules ---------- */
+.modules { padding: 70px 48px; }
+.modules h2 { margin-bottom: 28px; font-size: 26px; }
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.module-card {
+    background: white;
+    border: 2px solid #eaf4fb;
+    border-radius: 18px;
+    padding: 26px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(60,90,130,0.12);
+}
+.module-icon { font-size: 32px; margin-bottom: 12px; }
+.module-card h3 { margin-bottom: 8px; font-size: 17px; }
+.module-card p { color: #6c7793; font-size: 13px; line-height: 1.5; }
+
+footer {
+    text-align: center;
+    padding: 24px;
+    color: #6c7793;
+    font-size: 13px;
+    border-top: 1px solid #eaf4fb;
+}

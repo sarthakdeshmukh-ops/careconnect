@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #eaf4fb;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
+    background-size: 24px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.care-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(60, 90, 130, 0.15);
+    border: 2px solid #dceefb;
+}
+
+.care-badge {
+    display: inline-block;
+    background: #a9d6f5;
+    color: #2c3454;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+h1 {
+    color: #2c3454;
+    font-size: 26px;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: #6c7793;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    color: #2c3454;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 14px 0 6px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #dceefb;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #7fb8e8;
+}
+
+.care-btn {
+    width: 100%;
+    background: #f28b82;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 22px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.care-btn:hover {
+    background: #ee7268;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #6c7793;
+}
+
+.switch-link a {
+    color: #4a90d9;
+    font-weight: 600;
+    text-decoration: none;
+}

@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; }
+
+.page-header { padding: 40px 48px 0; }
+.page-header h1 { font-size: 28px; margin-bottom: 6px; }
+.page-header p { color: #6c7793; font-size: 14px; }
+
+.tabs { display: flex; gap: 24px; margin: 20px 48px 0; border-bottom: 2px solid #eaf4fb; }
+.tab-btn { background: none; border: none; padding: 12px 4px; font-family: inherit; font-size: 14px; font-weight: 600; color: #6c7793; cursor: pointer; border-bottom: 3px solid transparent; }
+.tab-btn.active { color: #4a90d9; border-bottom-color: #4a90d9; }
+
+.week-nav { display: flex; align-items: center; justify-content: space-between; margin: 24px 48px 0; }
+.week-nav-btn { background: white; border: 2px solid #eaf4fb; color: #4a90d9; padding: 9px 16px; border-radius: 10px; text-decoration: none; font-size: 13px; font-weight: 600; }
+.week-nav-btn.disabled { color: #ccc; border-color: #f0f0f0; cursor: not-allowed; }
+.week-nav-center { display: flex; align-items: center; gap: 12px; }
+.week-range { font-weight: 700; font-size: 15px; }
+.week-nav-center input[type="date"] { padding: 8px 10px; border: 2px solid #eaf4fb; border-radius: 8px; font-family: inherit; font-size: 13px; }
+
+.add-btn { display: block; margin: 16px 48px 0; background: #4a90d9; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+.summary-card { margin: 20px 48px; background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 24px; }
+.summary-card h2 { font-size: 16px; margin-bottom: 16px; }
+
+.summary-numbers { display: flex; gap: 40px; margin-bottom: 24px; }
+.summary-numbers strong { display: block; font-size: 26px; color: #4a90d9; }
+.summary-numbers span { font-size: 12px; color: #6c7793; }
+
+.bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 140px; gap: 12px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.bar { width: 32px; background: #7fb3e8; border-radius: 6px 6px 0 0; cursor: pointer; transition: background 0.2s; min-height: 4px; }
+.bar:hover { background: #4a90d9; }
+.bar-future { background: #f0f3f8; cursor: default; }
+.bar-label { margin-top: 8px; font-size: 12px; color: #6c7793; }
+.bar-label-today { color: #4a90d9; font-weight: 700; }
+
+.entries-list { margin: 0 48px 40px; }
+.entry-row { display: flex; align-items: center; gap: 16px; background: white; border: 2px solid #eaf4fb; border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; }
+.entry-icon { width: 40px; height: 40px; border-radius: 10px; background: #eaf4fb; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.entry-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.entry-info strong { font-size: 14px; }
+.entry-info span { font-size: 12px; color: #6c7793; }
+.remove-btn { background: #fde6e4; color: #e05a4f; border: none; padding: 8px 16px; border-radius: 10px; font-family: inherit; font-weight: 600; font-size: 12px; cursor: pointer; }
+.empty-msg { color: #6c7793; font-size: 13px; padding: 20px 0; }
+
+/* Nutrition */
+.calorie-row { display: flex; align-items: center; gap: 40px; }
+.calorie-ring { width: 160px; height: 160px; border-radius: 50%; background: conic-gradient(#4a90d9 calc(var(--pct) * 1%), #eaf4fb 0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.calorie-ring-inner { width: 122px; height: 122px; background: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.calorie-value { font-size: 26px; font-weight: 700; color: #4a90d9; }
+.calorie-sep { font-size: 13px; color: #6c7793; }
+.calorie-unit { font-size: 11px; color: #6c7793; }
+
+.macro-list { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+.dot-blue { background: #4a90d9; }
+.dot-orange { background: #e0a13c; }
+.dot-red { background: #e05a4f; }
+
+.goal-form { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.goal-form label { font-size: 12px; color: #6c7793; }
+.goal-form input { width: 90px; padding: 7px 10px; border: 2px solid #eaf4fb; border-radius: 8px; font-family: inherit; font-size: 13px; }
+.save-goal-btn { background: #4a90d9; color: white; border: none; padding: 7px 14px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 12px; cursor: pointer; }
+
+/* BMI */
+.bmi-section { display: flex; gap: 24px; margin: 28px 48px 40px; }
+.bmi-card { flex: 1; background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 28px; }
+.bmi-card h2 { font-size: 17px; margin-bottom: 16px; }
+.bmi-card label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 6px; }
+.bmi-card input { width: 100%; padding: 11px 14px; border: 2px solid #eaf4fb; border-radius: 10px; font-family: inherit; font-size: 14px; }
+.bmi-result { margin-top: 16px; background: #f5f8fb; border-radius: 12px; padding: 16px; text-align: center; font-size: 14px; color: #6c7793; }
+
+.bmi-cat { display: flex; justify-content: space-between; color: white; padding: 12px 16px; border-radius: 10px; margin-bottom: 10px; font-weight: 600; font-size: 14px; }
+.bmi-under { background: #4a90d9; }
+.bmi-normal { background: #4caf7d; }
+.bmi-over { background: #e0a13c; }
+.bmi-obese { background: #e05a4f; }
+.bmi-note { font-size: 12px; color: #6c7793; margin-top: 12px; line-height: 1.5; }
+
+/* Modal (shared pattern) */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(44,52,84,0.4); align-items: center; justify-content: center; z-index: 100; }
+.modal-overlay.show { display: flex; }
+.modal-box { background: white; border-radius: 20px; padding: 32px; width: 420px; max-height: 85vh; overflow-y: auto; }
+.modal-box h2 { margin-bottom: 18px; font-size: 20px; }
+.modal-box label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 6px; }
+.modal-box input, .modal-box select, .modal-box textarea { width: 100%; padding: 11px 14px; border: 2px solid #eaf4fb; border-radius: 10px; font-family: inherit; font-size: 14px; }
+.modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+.cancel-btn { background: white; color: #4a90d9; border: 2px solid #4a90d9; padding: 10px 20px; border-radius: 10px; font-family: inherit; font-weight: 600; cursor: pointer; }
+.save-btn { background: #4a90d9; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-family: inherit; font-weight: 600; cursor: pointer; }
+
+.day-detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eaf4fb; font-size: 13px; }
+.day-detail-row:last-child { border-bottom: none; }
+
+.list-heading { margin: 0 48px 12px; font-size: 15px; color: #2c3454; }
+
+.vitals-header { display: flex; justify-content: space-between; align-items: center; margin: 24px 48px 16px; }
+.vitals-header h2 { font-size: 18px; }
+.add-btn-inline { background: #4a90d9; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+.vitals-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin: 0 48px 32px; }
+.vital-card { background: white; border: 2px solid #eaf4fb; border-radius: 16px; padding: 20px 12px; text-align: center; }
+.vital-icon { font-size: 26px; margin-bottom: 8px; }
+.vital-title { font-size: 12px; color: #6c7793; margin-bottom: 6px; }
+.vital-value { font-size: 22px; font-weight: 700; color: #2c3454; }
+.vital-unit { font-size: 11px; color: #6c7793; margin-top: 2px; }
+
+.vital-reading-value { color: #4a90d9; font-weight: 600; margin-right: 8px; }
+.vital-reading-notes { color: #6c7793; }
+.vital-date { font-size: 12px; color: #6c7793; margin-right: 12px; white-space: nowrap; }

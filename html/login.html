@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - CareConnection+</title>
+<link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="care-card">
+    <div class="care-badge">Your Health, Simplified.</div>
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Login to CareConnection+</p>
+
+    <form action="../php/login_process.php" method="POST" id="loginForm">
+      <label>Unique User ID</label>
+      <input type="text" name="unique_user_id" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Password</label>
+      <input type="password" name="password" required>
+
+      <button type="submit" class="care-btn">Log In</button>
+    </form>
+
+    <p class="switch-link">Don't have an account? <a href="register.html">Sign up here</a></p>
+  </div>
+  <script src="../js/login.js"></script>
+</body>
+</html>

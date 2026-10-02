@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; }
+
+.page-header { padding: 40px 48px 0; position: relative; }
+.page-header h1 { font-size: 28px; margin-bottom: 6px; }
+.page-header p { color: #6c7793; font-size: 14px; }
+
+.add-btn {
+    position: absolute;
+    top: 40px;
+    right: 48px;
+    background: #4a90d9;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.appointments-list { margin: 28px 48px; }
+
+.appt-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: white;
+    border: 2px solid #eaf4fb;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.appt-date {
+    background: #eaf4fb;
+    border-radius: 12px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 64px;
+}
+.appt-date .day { display: block; font-size: 20px; font-weight: 700; color: #4a90d9; }
+.appt-date .month { display: block; font-size: 12px; color: #6c7793; }
+
+.appt-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.appt-info strong { font-size: 15px; }
+.appt-info span { font-size: 13px; color: #6c7793; }
+
+.badge { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.badge-upcoming { background: #e6eefb; color: #4a90d9; }
+.badge-completed { background: #e3f7ea; color: #2fa360; }
+.badge-cancelled { background: #f0f0f0; color: #888; }
+
+.cancel-appt-btn {
+    background: #fde6e4;
+    color: #e05a4f;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.empty-msg { color: #6c7793; font-size: 13px; padding: 20px 0; }
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(44,52,84,0.4);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.modal-overlay.show { display: flex; }
+
+.modal-box {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.modal-box h2 { margin-bottom: 18px; font-size: 20px; }
+.modal-box label { display: block; font-size: 13px; font-weight: 600; margin: 12px 0 6px; }
+.modal-box input, .modal-box select, .modal-box textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid #eaf4fb;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+.modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+.cancel-btn { background: white; color: #4a90d9; border: 2px solid #4a90d9; padding: 10px 20px; border-radius: 10px; font-family: inherit; font-weight: 600; cursor: pointer; }
+.save-btn { background: #4a90d9; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-family: inherit; font-weight: 600; cursor: pointer; }
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 24px;
+    margin: 20px 48px 0;
+    border-bottom: 2px solid #eaf4fb;
+}
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 4px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c7793;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+.tab-btn.active {
+    color: #4a90d9;
+    border-bottom-color: #4a90d9;
+}
+
+/* Health record rows */
+.record-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border: 2px solid #eaf4fb;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+.record-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #eaf4fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
