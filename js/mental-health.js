@@ -59,3 +59,10 @@ newAffirmationBtn.addEventListener("click", function () {
     const random = affirmationsList[Math.floor(Math.random() * affirmationsList.length)];
     affirmationBox.textContent = '"' + random + '"';
 });
+
+const moodDatePicker = document.getElementById("moodDatePicker");
+if (moodDatePicker) {
+    moodDatePicker.addEventListener("change", function () {
+        window.location.href = "mental-health.php?week=" + this.value;
+    });
+}

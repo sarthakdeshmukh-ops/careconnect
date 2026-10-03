@@ -188,10 +188,11 @@ $activePage = "mental-health";
 
 <div class="two-col">
   <section class="panel">
-    <div class="week-nav">
+      <div class="week-nav">
       <a href="mental-health.php?week=<?php echo $prevWeek; ?>" class="week-nav-btn">‹ Prev</a>
       <div class="week-nav-center">
         <span class="week-range"><?php echo (new DateTime($weekStart))->format("d M"); ?> — <?php echo (new DateTime($weekEnd))->format("d M Y"); ?></span>
+        <input type="date" id="moodDatePicker" value="<?php echo $weekParam; ?>" max="<?php echo $today; ?>">
       </div>
       <?php if ($canGoNextWeek): ?>
         <a href="mental-health.php?week=<?php echo $nextWeek; ?>" class="week-nav-btn">Next ›</a>

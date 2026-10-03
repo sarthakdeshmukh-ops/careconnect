@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; }
+
+.page-header { padding: 40px 48px 0; }
+.page-header h1 { font-size: 28px; margin-bottom: 6px; }
+.page-header p { color: #6c7793; font-size: 14px; }
+
+.tabs { display: flex; gap: 24px; margin: 20px 48px 0; border-bottom: 2px solid #eaf4fb; }
+.tab-btn { background: none; border: none; padding: 12px 4px; font-family: inherit; font-size: 14px; font-weight: 600; color: #6c7793; cursor: pointer; border-bottom: 3px solid transparent; }
+.tab-btn.active { color: #4a90d9; border-bottom-color: #4a90d9; }
+
+/* Health Articles */
+.filters { display: flex; gap: 16px; margin: 24px 48px; }
+.filters input, .filters select { padding: 13px 16px; border: 2px solid #eaf4fb; border-radius: 12px; font-family: inherit; font-size: 14px; }
+.filters input { flex: 1; }
+.filters select { min-width: 180px; }
+
+.article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 0 48px 40px; }
+.article-card { background: white; border: 2px solid #eaf4fb; border-radius: 18px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.article-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(60,90,130,0.12); }
+.article-banner { height: 110px; display: flex; align-items: center; justify-content: center; }
+.article-emoji { font-size: 40px; }
+.article-body { padding: 18px 20px; }
+.article-cat { font-size: 11px; font-weight: 700; color: #4a90d9; letter-spacing: 0.5px; }
+.article-body h3 { font-size: 15px; margin: 8px 0; line-height: 1.3; }
+.article-body p { font-size: 13px; color: #6c7793; line-height: 1.5; margin-bottom: 12px; }
+.article-meta { display: flex; justify-content: space-between; font-size: 12px; color: #9aa5ba; }
+
+.no-results { text-align: center; color: #6c7793; font-size: 14px; margin: 40px 0; }
+
+/* Vaccination Drives */
+.entries-list { margin: 24px 48px 40px; }
+.drive-row { display: flex; align-items: center; gap: 16px; background: white; border: 2px solid #eaf4fb; border-radius: 16px; padding: 18px 20px; margin-bottom: 14px; }
+.drive-icon { width: 42px; height: 42px; border-radius: 10px; background: #eaf4fb; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.drive-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.drive-info strong { font-size: 14px; }
+.drive-info span { font-size: 12px; color: #6c7793; }
+.badge { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.badge-upcoming { background: #e6eefb; color: #4a90d9; }
+.badge-completed { background: #e3f7ea; color: #2fa360; }
+
+/* Disease Prevention */
+.prevention-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 48px 40px; }
+.prevention-card { background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 24px; }
+.prevention-icon { font-size: 30px; margin-bottom: 10px; }
+.prevention-card h3 { font-size: 15px; margin-bottom: 12px; }
+.prevention-card ul { padding-left: 18px; }
+.prevention-card li { font-size: 13px; color: #6c7793; margin-bottom: 8px; line-height: 1.4; }
+
+/* Emergency Info */
+.panel-block { margin: 24px 48px; background: white; border: 2px solid #eaf4fb; border-radius: 18px; padding: 24px; }
+.panel-block h2 { font-size: 16px; margin-bottom: 16px; }
+
+.emergency-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.emergency-card { background: #f5f8fb; border-radius: 12px; padding: 16px 10px; text-align: center; }
+.emergency-label { display: block; font-size: 12px; color: #6c7793; margin-bottom: 8px; }
+.emergency-number { display: block; font-size: 18px; font-weight: 700; color: #e05a4f; }
+
+.hospital-list { display: flex; flex-direction: column; gap: 10px; }
+.hospital-row { display: flex; align-items: center; gap: 14px; background: #f5f8fb; border-radius: 10px; padding: 14px 16px; }
+.hospital-icon { font-size: 18px; }
+.hospital-row strong { display: block; font-size: 14px; }
+.hospital-row span { font-size: 12px; color: #6c7793; }
+
+/* Modal (shared pattern) */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(44,52,84,0.4); align-items: center; justify-content: center; z-index: 100; }
+.modal-overlay.show { display: flex; }
+.modal-box { background: white; border-radius: 20px; padding: 32px; width: 420px; max-height: 85vh; overflow-y: auto; }
+.article-modal-box { width: 560px; max-width: 92vw; }
+.modal-cat-badge { display: inline-block; background: #eaf4fb; color: #4a90d9; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+.modal-box h2 { font-size: 20px; margin-bottom: 6px; line-height: 1.3; }
+.modal-byline { font-size: 13px; color: #6c7793; margin-bottom: 20px; }
+.modal-article-body { font-size: 14px; line-height: 1.7; color: #2c3454; }
+.modal-article-body p { margin-bottom: 14px; }
+.modal-article-body ul, .modal-article-body ol { padding-left: 20px; margin-bottom: 14px; }
+.modal-article-body li { margin-bottom: 6px; }
+.modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+.cancel-btn { background: white; color: #4a90d9; border: 2px solid #4a90d9; padding: 10px 20px; border-radius: 10px; font-family: inherit; font-weight: 600; cursor: pointer; }
