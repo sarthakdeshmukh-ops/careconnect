@@ -148,3 +148,17 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
     font-size: 22px;
     flex-shrink: 0;
 }
+
+.view-doc-btn {
+    background: #eaf4fb;
+    color: #4a90d9;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    margin-right: 10px;
+    white-space: nowrap;
+}

@@ -20,7 +20,7 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
     font-size: 14px;
 }
 .filters input { flex: 1; }
-.filters select { min-width: 180px; }
+.filters select { min-width: 160px; }
 
 .mode-toggle { display: flex; gap: 10px; margin: 0 48px 24px; }
 .mode-btn {
@@ -193,3 +193,7 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
 }
 .call-btn.active-off { background: #fde6e4; }
 .call-btn-end { background: #e05a4f; }
+
+.doc-footer-both { flex-direction: column; align-items: flex-start; gap: 10px; }
+.doc-both-buttons { display: flex; gap: 8px; width: 100%; }
+.doc-both-buttons .book-offline-btn, .doc-both-buttons .consult-btn { flex: 1; padding: 9px 10px; font-size: 12px; }

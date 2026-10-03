@@ -35,8 +35,8 @@ $activePage = "home";
     <h1>Your Health, <span class="highlight">Simplified.</span></h1>
     <p>A complete digital health companion — manage appointments, track medications, consult doctors, and nurture your mental wellness, all in one place.</p>
     <div class="hero-buttons">
-      <a href="#" class="btn-primary">Book Appointment</a>
-      <a href="#" class="btn-secondary">Find a Doctor</a>
+      <a href="appointments.php" class="btn-primary">Book Appointment</a>
+      <a href="telemedicine.php" class="btn-secondary">Find a Doctor</a>
     </div>
   </div>
   <div class="hero-icon">🩺</div>

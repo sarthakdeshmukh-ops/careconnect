@@ -22,6 +22,9 @@ $doctors = $doctorsResult->fetch_all(MYSQLI_ASSOC);
 $specialties = array_unique(array_column($doctors, "specialty"));
 sort($specialties);
 
+$locations = array_unique(array_column($doctors, "location"));
+sort($locations);
+
 $activePage = "telemedicine";
 ?>
 <!DOCTYPE html>
@@ -43,10 +46,16 @@ $activePage = "telemedicine";
 
 <section class="filters">
   <input type="text" id="searchBox" placeholder="Search doctors by name or specialty...">
-  <select id="specialtyFilter">
+    <select id="specialtyFilter">
     <option value="all">All Specialties</option>
     <?php foreach ($specialties as $spec): ?>
-      <option value="<?php echo htmlspecialchars($spec); ?>"><?php echo htmlspecialchars($spec); ?></option>
+    <option value="<?php echo htmlspecialchars($spec); ?>"><?php echo htmlspecialchars($spec); ?></option>
+    <?php endforeach; ?>
+  </select>
+  <select id="locationFilter">
+    <option value="all">All Locations</option>
+    <?php foreach ($locations as $loc): ?>
+    <option value="<?php echo htmlspecialchars($loc); ?>"><?php echo htmlspecialchars($loc); ?></option>
     <?php endforeach; ?>
   </select>
 </section>
@@ -59,10 +68,11 @@ $activePage = "telemedicine";
 
 <section class="doctor-grid" id="doctorGrid">
   <?php foreach ($doctors as $doc): ?>
-    <div class="doctor-card"
+        <div class="doctor-card"
          data-name="<?php echo strtolower(htmlspecialchars($doc['doctor_name'])); ?>"
          data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
-         data-mode="<?php echo htmlspecialchars($doc['consultation_mode']); ?>">
+         data-mode="<?php echo htmlspecialchars($doc['consultation_mode']); ?>"
+         data-location="<?php echo htmlspecialchars($doc['location']); ?>">
       <div class="doc-avatar">🧑‍⚕️</div>
       <h3><?php echo htmlspecialchars($doc['doctor_name']); ?></h3>
       <span class="doc-specialty"><?php echo htmlspecialchars($doc['specialty']); ?></span>
@@ -70,11 +80,12 @@ $activePage = "telemedicine";
       <div class="doc-meta">
         ⭐ <?php echo $doc['rating']; ?> &nbsp;
         📋 <?php echo $doc['experience_years']; ?> yrs exp &nbsp;
-        💬 <?php echo htmlspecialchars($doc['languages']); ?>
+        💬 <?php echo htmlspecialchars($doc['languages']); ?> &nbsp;
+        📍 <?php echo htmlspecialchars($doc['location']); ?>
       </div>
       <div class="doc-fee">₹<?php echo $doc['consultation_fee']; ?></div>
 
-      <?php if (!$doc['is_available']): ?>
+           <?php if (!$doc['is_available']): ?>
         <div class="doc-footer">
           <span class="status status-unavailable">● Unavailable</span>
           <button class="consult-btn" disabled>Unavailable</button>
@@ -89,7 +100,7 @@ $activePage = "telemedicine";
             Book Appointment
           </button>
         </div>
-      <?php else: ?>
+      <?php elseif ($doc['consultation_mode'] === 'Online'): ?>
         <div class="doc-footer">
           <span class="status status-available">● Available</span>
           <button class="consult-btn"
@@ -99,6 +110,25 @@ $activePage = "telemedicine";
                   data-fee="<?php echo $doc['consultation_fee']; ?>">
             Consult Now
           </button>
+        </div>
+      <?php else: ?>
+        <div class="doc-footer doc-footer-both">
+          <span class="status status-available">● Available</span>
+          <div class="doc-both-buttons">
+            <button class="book-offline-btn"
+                    data-id="<?php echo $doc['id']; ?>"
+                    data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                    data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>">
+              Book
+            </button>
+            <button class="consult-btn"
+                    data-id="<?php echo $doc['id']; ?>"
+                    data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                    data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
+                    data-fee="<?php echo $doc['consultation_fee']; ?>">
+              Consult Now
+            </button>
+          </div>
         </div>
       <?php endif; ?>
     </div>

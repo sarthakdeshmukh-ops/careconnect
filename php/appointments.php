@@ -130,12 +130,15 @@ $activePage = "appointments";
         ];
         $icon = $typeIcons[$rec["record_type"]] ?? "📄";
       ?>
-      <div class="record-row">
+            <div class="record-row">
         <div class="record-icon"><?php echo $icon; ?></div>
         <div class="appt-info">
           <strong><?php echo htmlspecialchars($rec["title"]); ?></strong>
           <span><?php echo htmlspecialchars($rec["record_type"]); ?> &bull; <?php echo htmlspecialchars($rec["record_date"]); ?> &bull; <?php echo htmlspecialchars($rec["doctor_name"]); ?><?php if ($rec["notes"]): ?> &bull; <?php echo htmlspecialchars($rec["notes"]); ?><?php endif; ?></span>
         </div>
+        <?php if ($rec["document_path"]): ?>
+          <a href="<?php echo htmlspecialchars($rec['document_path']); ?>" target="_blank" class="view-doc-btn">📄 View</a>
+        <?php endif; ?>
         <form action="remove_record_process.php" method="POST" onsubmit="return confirm('Remove this record?');">
           <input type="hidden" name="record_id" value="<?php echo $rec['id']; ?>">
           <button type="submit" class="cancel-appt-btn">Remove</button>
@@ -188,7 +191,7 @@ $activePage = "appointments";
 <div class="modal-overlay" id="recordModalOverlay">
   <div class="modal-box">
     <h2>📋 Add Health Record</h2>
-    <form action="add_record_process.php" method="POST">
+    <form action="add_record_process.php" method="POST" enctype="multipart/form-data">
       <label>Record Type</label>
       <select name="record_type" required>
         <option value="">Select Type</option>
@@ -213,6 +216,9 @@ $activePage = "appointments";
           <option value="<?php echo $doc['id']; ?>"><?php echo htmlspecialchars($doc['doctor_name']); ?> — <?php echo htmlspecialchars($doc['specialty']); ?></option>
         <?php endforeach; ?>
       </select>
+
+      <label>Upload Document</label>
+      <input type="file" name="document" accept=".pdf,.jpg,.jpeg,.png" required>
 
       <label>Notes (optional)</label>
       <textarea name="notes" placeholder="Additional details..." rows="3"></textarea>

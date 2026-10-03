@@ -1,5 +1,6 @@
 const searchBox = document.getElementById("searchBox");
 const specialtyFilter = document.getElementById("specialtyFilter");
+const locationFilter = document.getElementById("locationFilter");
 const modeButtons = document.querySelectorAll(".mode-btn");
 const cards = document.querySelectorAll(".doctor-card");
 const noResults = document.getElementById("noResults");
@@ -9,18 +10,21 @@ let activeMode = "all";
 function applyFilters() {
     const searchTerm = searchBox.value.toLowerCase();
     const selectedSpecialty = specialtyFilter.value;
+    const selectedLocation = locationFilter.value;
     let visibleCount = 0;
 
     cards.forEach(function (card) {
         const name = card.getAttribute("data-name");
         const specialty = card.getAttribute("data-specialty");
         const mode = card.getAttribute("data-mode");
+        const location = card.getAttribute("data-location");
 
         const matchesSearch = name.includes(searchTerm) || specialty.toLowerCase().includes(searchTerm);
         const matchesSpecialty = selectedSpecialty === "all" || specialty === selectedSpecialty;
+        const matchesLocation = selectedLocation === "all" || location === selectedLocation;
         const matchesMode = activeMode === "all" || mode === activeMode || mode === "Both";
 
-        if (matchesSearch && matchesSpecialty && matchesMode) {
+        if (matchesSearch && matchesSpecialty && matchesLocation && matchesMode) {
             card.style.display = "block";
             visibleCount++;
         } else {
@@ -33,6 +37,7 @@ function applyFilters() {
 
 searchBox.addEventListener("input", applyFilters);
 specialtyFilter.addEventListener("change", applyFilters);
+locationFilter.addEventListener("change", applyFilters);
 
 modeButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
