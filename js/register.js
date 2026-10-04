@@ -11,3 +11,34 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
         alert("Password should be at least 6 characters.");
     }
 });
+
+const passwordInput = document.getElementById("password");
+const passwordToggle = document.getElementById("passwordToggle");
+
+passwordToggle.addEventListener("click", function () {
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggle.textContent = "Hide";
+    } else {
+        passwordInput.type = "password";
+        passwordToggle.textContent = "Show";
+    }
+
+});
+
+
+const confirmPasswordInput = document.getElementById("confirm_password");
+const confirmPasswordToggle = document.getElementById("confirmPasswordToggle");
+
+confirmPasswordToggle.addEventListener("click", function () {
+
+    if (confirmPasswordInput.type === "password") {
+        confirmPasswordInput.type = "text";
+        confirmPasswordToggle.textContent = "Hide";
+    } else {
+        confirmPasswordInput.type = "password";
+        confirmPasswordToggle.textContent = "Show";
+    }
+
+});
