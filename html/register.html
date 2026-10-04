@@ -2,37 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Register - CareConnection+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - CareConnect+</title>
 <link rel="stylesheet" href="../css/register.css">
 </head>
+
 <body>
-  <div class="care-card">
-    <div class="care-badge">Your Health, Simplified.</div>
-    <h1>Create Your Account</h1>
-    <p class="subtitle">Join CareConnection+</p>
 
-    <form action="../php/register_process.php" method="POST" id="registerForm">
-      <label>Full Name</label>
-      <input type="text" name="full_name" required>
+  <main class="auth-shell">
 
-      <label>Unique User ID</label>
-      <input type="text" name="unique_user_id" required>
+    <!-- Left: CareConnect introduction -->
+    <section class="brand-panel">
 
-      <label>Email</label>
-      <input type="email" name="email" required>
+      <div class="brand-content">
 
-      <label>Password</label>
-      <input type="password" name="password" id="password" required>
+        <div class="brand-mark">
+          <span class="brand-dot"></span>
+          <span>CareConnect+</span>
+        </div>
 
-      <label>Confirm Password</label>
-      <input type="password" name="confirm_password" id="confirm_password" required>
+        <div class="brand-message">
 
-      <button type="submit" class="care-btn">Sign Up</button>
-    </form>
+          <div class="care-badge">
+            Your health, thoughtfully connected.
+          </div>
 
-    <p class="switch-link">Already have an account? <a href="login.html">Log in here</a></p>
-  </div>
-  <script src="../js/password-toggle.js"></script>
+          <h2>Start taking care of what matters.</h2>
+
+          <p>
+            Create your CareConnect+ account and keep your healthcare
+            experience simple, connected, and easy to manage.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Right: Registration form -->
+    <section class="auth-panel">
+
+      <div class="care-card">
+
+        <div class="form-header">
+          <h1>Create Your Account</h1>
+          <p class="subtitle">Join CareConnect+</p>
+        </div>
+
+        <form
+          action="../php/register_process.php"
+          method="POST"
+          id="registerForm"
+        >
+
+          <div class="form-group">
+            <label for="full_name">Full Name</label>
+            <input
+              type="text"
+              id="full_name"
+              name="full_name"
+              placeholder="Enter your full name"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="unique_user_id">Unique User ID</label>
+            <input
+              type="text"
+              id="unique_user_id"
+              name="unique_user_id"
+              placeholder="Choose a user ID"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+
+            <div class="password-field">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+
+            <div class="password-field">
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Re-enter your password"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="confirmPasswordToggle"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="care-btn">
+            Create Account
+          </button>
+
+        </form>
+
+        <p class="switch-link">
+          Already have an account?
+          <a href="login.html">Log in here</a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
   <script src="../js/register.js"></script>
+
 </body>
 </html>
