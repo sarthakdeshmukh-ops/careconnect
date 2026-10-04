@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness - CareConnection+</title>
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/fitness.css">
+</head>
+<body>
+
+  <!-- Dynamic Header/Navbar Container -->
+  <div id="navbarContainer"></div>
+
+  <section class="page-header">
+    <h1>🏃 Fitness, Nutrition & Health Tracking</h1>
+    <p>Track workouts, log meals, monitor your vitals and stay on top of your health goals.</p>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tabWorkoutsBtn">Workouts</button>
+    <button class="tab-btn" id="tabNutritionBtn">Nutrition</button>
+    <button class="tab-btn" id="tabVitalsBtn">Health Vitals</button>
+    <button class="tab-btn" id="tabBmiBtn">BMI Calculator</button>
+  </div>
+
+  <!-- WORKOUTS TAB -->
+  <div id="workoutsTab" class="tab-panel" style="display:block;">
+    <div class="week-nav">
+      <div class="week-nav-center">
+        <input type="date" id="workoutDatePicker">
+      </div>
+    </div>
+
+    <button class="add-btn" id="openWorkoutModalBtn">+ Log Workout</button>
+
+    <section class="summary-card">
+      <h2>This Week's Summary</h2>
+      <div class="summary-numbers">
+        <div><strong id="totalWorkouts">0</strong><span>Workouts</span></div>
+        <div><strong id="totalMinutes">0</strong><span>Minutes</span></div>
+        <div><strong id="totalCalories">0</strong><span>Cal Burned</span></div>
+      </div>
+      
+      <!-- Dynamic Weekly Bar Chart -->
+      <div class="bar-chart" id="barChartContainer"></div>
+    </section>
+
+    <section class="entries-list">
+      <h3 class="list-heading">Workouts Logged</h3>
+      <div id="todayWorkoutsList"></div>
+    </section>
+  </div>
+
+  <!-- NUTRITION TAB -->
+  <div id="nutritionTab" class="tab-panel" style="display:none;">
+    <div class="week-nav">
+      <div class="week-nav-center">
+        <input type="date" id="nutritionDatePicker">
+      </div>
+    </div>
+
+    <button class="add-btn" id="openMealModalBtn">+ Log Meal</button>
+
+    <section class="summary-card">
+      <div class="calorie-row">
+        <div class="calorie-ring">
+          <div class="calorie-value" id="dayCaloriesVal">0</div>
+          <div class="calorie-sep" id="calorieGoalVal">/ 2000</div>
+          <div class="calorie-unit">kcal</div>
+        </div>
+        <div class="macro-list">
+          <div>Protein: <strong id="proteinVal">0g</strong></div>
+          <div>Carbs: <strong id="carbsVal">0g</strong></div>
+          <div>Fat: <strong id="fatVal">0g</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="entries-list" id="dayMealsList"></section>
+  </div>
+
+  <!-- HEALTH VITALS TAB -->
+  <div id="vitalsTab" class="tab-panel" style="display:none;">
+    <button class="add-btn" id="openVitalModalBtn">+ Log Vital</button>
+    <section class="entries-list" id="allVitalsList" style="margin-top:20px;"></section>
+  </div>
+
+  <!-- BMI CALCULATOR TAB -->
+  <div id="bmiTab" class="tab-panel" style="display:none;">
+    <section class="bmi-section">
+      <div class="bmi-card">
+        <h2>BMI Calculator</h2>
+        <label for="bmiWeight">Weight (kg)</label>
+        <input type="number" id="bmiWeight" placeholder="e.g., 70">
+        <label for="bmiHeight">Height (cm)</label>
+        <input type="number" id="bmiHeight" placeholder="e.g., 170">
+        <div class="bmi-result" id="bmiResult" style="margin-top:15px;">Enter your weight and height to calculate BMI.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- WORKOUT MODAL -->
+  <div class="modal-overlay" id="workoutModalOverlay">
+    <div class="modal-box">
+      <h2>🏆 Log Workout</h2>
+      <form action="../php/workout_process.php" method="POST">
+        <label>Exercise Type</label>
+        <select name="exercise_type" required>
+          <option value="">Select</option>
+          <option value="Running">Running</option>
+          <option value="Weight Training">Weight Training</option>
+          <option value="Yoga">Yoga</option>
+          <option value="Cycling">Cycling</option>
+          <option value="Walking">Walking</option>
+          <option value="Swimming">Swimming</option>
+        </select>
+        <label>Duration (minutes)</label>
+        <input type="number" name="duration_minutes" placeholder="30" required min="1">
+        <label>Calories Burned</label>
+        <input type="number" name="calories_burned" placeholder="250" required min="0">
+        <div class="modal-buttons">
+          <button type="button" class="cancel-btn" id="cancelWorkoutModalBtn">Cancel</button>
+          <button type="submit" class="save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MEAL MODAL -->
+  <div class="modal-overlay" id="mealModalOverlay">
+    <div class="modal-box">
+      <h2>🍽️ Log Meal</h2>
+      <form action="../php/meal_process.php" method="POST">
+        <label>Meal Type</label>
+        <select name="meal_type" required>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+        </select>
+        <label>Food Items</label>
+        <input type="text" name="food_items" placeholder="e.g. Oatmeal & Banana" required>
+        <label>Calories</label>
+        <input type="number" name="calories" required min="0">
+        <label>Protein (g)</label>
+        <input type="number" name="protein" value="0" min="0">
+        <label>Carbs (g)</label>
+        <input type="number" name="carbs" value="0" min="0">
+        <label>Fat (g)</label>
+        <input type="number" name="fat" value="0" min="0">
+        <div class="modal-buttons">
+          <button type="button" class="cancel-btn" id="cancelMealModalBtn">Cancel</button>
+          <button type="submit" class="save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- VITAL MODAL -->
+  <div class="modal-overlay" id="vitalModalOverlay">
+    <div class="modal-box">
+      <h2>📊 Log Vital</h2>
+      <form action="../php/vital_process.php" method="POST">
+        <label>Vital Type</label>
+        <select name="vital_type" required>
+          <option value="Blood Pressure">Blood Pressure</option>
+          <option value="Heart Rate">Heart Rate</option>
+          <option value="Blood Sugar">Blood Sugar</option>
+          <option value="Weight">Weight</option>
+        </select>
+        <label>Value</label>
+        <input type="text" name="value" placeholder="e.g., 120/80 or 72 bpm" required>
+        <label>Notes</label>
+        <input type="text" name="notes" placeholder="e.g., After morning walk">
+        <div class="modal-buttons">
+          <button type="button" class="cancel-btn" id="cancelVitalModalBtn">Cancel</button>
+          <button type="submit" class="save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DAY DETAIL MODAL -->
+  <div class="modal-overlay" id="dayModalOverlay">
+    <div class="modal-box">
+      <h2 id="dayModalTitle">📊 Day Details</h2>
+      <div id="dayModalContent"></div>
+      <div class="modal-buttons" style="margin-top: 15px;">
+        <button type="button" class="cancel-btn" id="closeDayModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/fitness.js"></script>
+</body>
+</html>
