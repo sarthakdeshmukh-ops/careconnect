@@ -1,31 +1,50 @@
 /* ---------- Navbar ---------- */
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 30px;
     padding: 18px 48px;
     border-bottom: 1px solid #eaf4fb;
     position: relative;
+    white-space: nowrap;
 }
 
 .logo {
     font-size: 22px;
     font-weight: 700;
     color: #2c3454;
+    flex-shrink: 0;
 }
-.logo .plus { color: #f28b82; }
+
+.logo .plus {
+    color: #f28b82;
+}
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 28px;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
 }
+
+.nav-links li {
+    flex-shrink: 0;
+}
+
 .nav-links a {
     text-decoration: none;
     color: #6c7793;
     font-weight: 500;
     font-size: 14px;
+    white-space: nowrap;
 }
+
 .nav-links a.active,
 .nav-links a:hover {
     color: #4a90d9;
@@ -39,6 +58,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 /* ---------- Profile dropdown ---------- */
