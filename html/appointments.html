@@ -11,7 +11,7 @@
 <?php include "includes/navbar.php"; ?>
 
 <section class="page-header">
-  <h1>📅 Appointments & Records</h1>
+  <h1>Appointments & Records</h1>
   <p>Manage your appointments and keep health records organized.</p>
   <button class="add-btn" id="openModalBtn">+ Book Appointment</button>
   <button class="add-btn" id="openRecordModalBtn" style="display:none;background:#4caf7d;">+ Add Record</button>
@@ -40,7 +40,7 @@
         </div>
         <div class="appt-info">
           <strong><?php echo htmlspecialchars($appt["doctor_name"]); ?> — <?php echo htmlspecialchars($appt["specialty"]); ?></strong>
-          <span>🕐 <?php echo htmlspecialchars($appt["appointment_time"]); ?> &nbsp; 📝 <?php echo htmlspecialchars($appt["reason"]); ?></span>
+          <span><?php echo htmlspecialchars($appt["appointment_time"]); ?> &nbsp; <?php echo htmlspecialchars($appt["reason"]); ?></span>
         </div>
 
         <?php if ($appt["status"] === "Upcoming"): ?>
@@ -68,14 +68,14 @@
     <?php foreach ($records as $rec): ?>
       <?php
         $typeIcons = [
-            "Blood Test" => "🩸",
-            "Prescription" => "💊",
-            "X-Ray" => "🦴",
-            "Scan / MRI" => "🧠",
-            "Vaccination" => "💉",
-            "Other" => "📄"
-        ];
-        $icon = $typeIcons[$rec["record_type"]] ?? "📄";
+    "Blood Test" => "BT",
+    "Prescription" => "RX",
+    "X-Ray" => "XR",
+    "Scan / MRI" => "MRI",
+    "Vaccination" => "VAC",
+    "Other" => "DOC"
+];
+        $icon = $typeIcons[$rec["record_type"]] ?? "DOC";
       ?>
             <div class="record-row">
         <div class="record-icon"><?php echo $icon; ?></div>
@@ -84,7 +84,7 @@
           <span><?php echo htmlspecialchars($rec["record_type"]); ?> &bull; <?php echo htmlspecialchars($rec["record_date"]); ?> &bull; <?php echo htmlspecialchars($rec["doctor_name"]); ?><?php if ($rec["notes"]): ?> &bull; <?php echo htmlspecialchars($rec["notes"]); ?><?php endif; ?></span>
         </div>
         <?php if ($rec["document_path"]): ?>
-          <a href="<?php echo htmlspecialchars($rec['document_path']); ?>" target="_blank" class="view-doc-btn">📄 View</a>
+          <a href="<?php echo htmlspecialchars($rec['document_path']); ?>" target="_blank" class="view-doc-btn">View</a>
         <?php endif; ?>
         <form action="remove_record_process.php" method="POST" onsubmit="return confirm('Remove this record?');">
           <input type="hidden" name="record_id" value="<?php echo $rec['id']; ?>">
@@ -98,7 +98,7 @@
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
-    <h2>📅 Book New Appointment</h2>
+    <h2>Book New Appointment</h2>
     <form action="book_appointment_process.php" method="POST">
       <input type="hidden" name="consultation_mode" value="Offline">
 
@@ -137,7 +137,7 @@
 
 <div class="modal-overlay" id="recordModalOverlay">
   <div class="modal-box">
-    <h2>📋 Add Health Record</h2>
+    <h2>Add Health Record</h2>
     <form action="add_record_process.php" method="POST" enctype="multipart/form-data">
       <label>Record Type</label>
       <select name="record_type" required>
@@ -172,7 +172,7 @@
 
       <div class="modal-buttons">
         <button type="button" class="cancel-btn" id="cancelRecordModalBtn">Cancel</button>
-        <button type="submit" class="save-btn" style="background:#4caf7d;">Save Record</button>
+        <button type="submit" class="save-btn">Save Record</button>
       </div>
     </form>
   </div>

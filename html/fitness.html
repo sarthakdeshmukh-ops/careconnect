@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fitness - CareConnection+</title>
+  <title>Fitness - CareConnect+</title>
   <link rel="stylesheet" href="../css/navbar.css">
   <link rel="stylesheet" href="../css/fitness.css">
 </head>
@@ -13,7 +13,7 @@
   <div id="navbarContainer"></div>
 
   <section class="page-header">
-    <h1>🏃 Fitness, Nutrition & Health Tracking</h1>
+    <h1>Fitness, Nutrition & Health Tracking</h1>
     <p>Track workouts, log meals, monitor your vitals and stay on top of your health goals.</p>
   </section>
 
@@ -27,13 +27,15 @@
 
   <!-- WORKOUTS TAB -->
   <div id="workoutsTab" class="tab-panel" style="display:block;">
-    <div class="week-nav">
-      <div class="week-nav-center">
-        <input type="date" id="workoutDatePicker">
-      </div>
+    <div class="section-actions">
+  <div class="week-nav">
+    <div class="week-nav-center">
+      <input type="date" id="workoutDatePicker">
     </div>
+  </div>
 
-    <button class="add-btn" id="openWorkoutModalBtn">+ Log Workout</button>
+  <button class="add-btn" id="openWorkoutModalBtn">+ Log Workout</button>
+</div>
 
     <section class="summary-card">
       <h2>This Week's Summary</h2>
@@ -55,6 +57,7 @@
 
   <!-- NUTRITION TAB -->
   <div id="nutritionTab" class="tab-panel" style="display:none;">
+  <div class="section-actions">
     <div class="week-nav">
       <div class="week-nav-center">
         <input type="date" id="nutritionDatePicker">
@@ -62,14 +65,17 @@
     </div>
 
     <button class="add-btn" id="openMealModalBtn">+ Log Meal</button>
+  </div>
 
     <section class="summary-card">
       <div class="calorie-row">
         <div class="calorie-ring">
-          <div class="calorie-value" id="dayCaloriesVal">0</div>
-          <div class="calorie-sep" id="calorieGoalVal">/ 2000</div>
-          <div class="calorie-unit">kcal</div>
-        </div>
+    <div class="calorie-ring-inner">
+        <div class="calorie-value" id="dayCaloriesVal">0</div>
+        <div class="calorie-sep" id="calorieGoalVal">/ 2000</div>
+        <div class="calorie-unit">kcal</div>
+    </div>
+</div>
         <div class="macro-list">
           <div>Protein: <strong id="proteinVal">0g</strong></div>
           <div>Carbs: <strong id="carbsVal">0g</strong></div>
@@ -83,9 +89,17 @@
 
   <!-- HEALTH VITALS TAB -->
   <div id="vitalsTab" class="tab-panel" style="display:none;">
+  <div class="vitals-header">
+    <div>
+      <h2>Health Vitals</h2>
+      <p>Keep track of your latest health readings.</p>
+    </div>
+
     <button class="add-btn" id="openVitalModalBtn">+ Log Vital</button>
-    <section class="entries-list" id="allVitalsList" style="margin-top:20px;"></section>
   </div>
+
+  <section class="entries-list" id="allVitalsList" style="margin-top:20px;"></section>
+</div>
 
   <!-- BMI CALCULATOR TAB -->
   <div id="bmiTab" class="tab-panel" style="display:none;">
@@ -104,7 +118,7 @@
   <!-- WORKOUT MODAL -->
   <div class="modal-overlay" id="workoutModalOverlay">
     <div class="modal-box">
-      <h2>🏆 Log Workout</h2>
+      <h2>Log Workout</h2>
       <form action="../php/workout_process.php" method="POST">
         <label>Exercise Type</label>
         <select name="exercise_type" required>
@@ -131,7 +145,7 @@
   <!-- MEAL MODAL -->
   <div class="modal-overlay" id="mealModalOverlay">
     <div class="modal-box">
-      <h2>🍽️ Log Meal</h2>
+      <h2>Log Meal</h2>
       <form action="../php/meal_process.php" method="POST">
         <label>Meal Type</label>
         <select name="meal_type" required>
@@ -161,7 +175,7 @@
   <!-- VITAL MODAL -->
   <div class="modal-overlay" id="vitalModalOverlay">
     <div class="modal-box">
-      <h2>📊 Log Vital</h2>
+      <h2>Log Vital</h2>
       <form action="../php/vital_process.php" method="POST">
         <label>Vital Type</label>
         <select name="vital_type" required>
@@ -185,7 +199,7 @@
   <!-- DAY DETAIL MODAL -->
   <div class="modal-overlay" id="dayModalOverlay">
     <div class="modal-box">
-      <h2 id="dayModalTitle">📊 Day Details</h2>
+      <h2 id="dayModalTitle">Day Details</h2>
       <div id="dayModalContent"></div>
       <div class="modal-buttons" style="margin-top: 15px;">
         <button type="button" class="cancel-btn" id="closeDayModalBtn">Close</button>

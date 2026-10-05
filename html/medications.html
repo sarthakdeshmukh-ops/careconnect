@@ -11,7 +11,7 @@
 <?php include "includes/navbar.php"; ?>
 
 <section class="page-header">
-  <h1>💊 Medication Tracker</h1>
+  <h1>Medication Tracker</h1>
   <p>Never miss a dose — manage your medications and schedules easily.</p>
   <button class="add-btn" id="openModalBtn">+ Add Medication</button>
 </section>
@@ -50,15 +50,15 @@
 
 <section class="stats-row">
   <div class="stat-card">
-    <div class="stat-icon stat-green">✔</div>
+    <div class="stat-icon stat-green">DONE</div>
     <div><h3><?php echo $takenCount; ?></h3><p>Taken Today</p></div>
   </div>
   <div class="stat-card">
-    <div class="stat-icon stat-yellow">⏳</div>
+    <div class="stat-icon stat-yellow">NEXT</div>
     <div><h3><?php echo $pendingCount; ?></h3><p>Pending</p></div>
   </div>
   <div class="stat-card">
-    <div class="stat-icon stat-red">✖</div>
+    <div class="stat-icon stat-red">MISSED</div>
     <div><h3><?php echo $missedCount; ?></h3><p>Missed</p></div>
   </div>
 </section>
@@ -90,7 +90,7 @@
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
-    <h2>💊 Add Medication</h2>
+    <h2>Add Medication</h2>
     <form action="add_medication_process.php" method="POST">
       <label>Medication Name</label>
       <input type="text" name="med_name" placeholder="e.g., Paracetamol" required>

@@ -11,7 +11,7 @@
 <?php include "includes/navbar.php"; ?>
 
 <section class="page-header">
-  <h1>🖥️ Telemedicine</h1>
+  <h1>Telemedicine</h1>
   <p>Browse and consult with doctors virtually — find the right specialist for you.</p>
 </section>
 
@@ -44,16 +44,16 @@
          data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
          data-mode="<?php echo htmlspecialchars($doc['consultation_mode']); ?>"
          data-location="<?php echo htmlspecialchars($doc['location']); ?>">
-      <div class="doc-avatar">🧑‍⚕️</div>
+      <div class="doc-avatar"></div>
       <h3><?php echo htmlspecialchars($doc['doctor_name']); ?></h3>
       <span class="doc-specialty"><?php echo htmlspecialchars($doc['specialty']); ?></span>
 
       <div class="doc-meta">
-        ⭐ <?php echo $doc['rating']; ?> &nbsp;
-        📋 <?php echo $doc['experience_years']; ?> yrs exp &nbsp;
-        💬 <?php echo htmlspecialchars($doc['languages']); ?> &nbsp;
-        📍 <?php echo htmlspecialchars($doc['location']); ?>
-      </div>
+  <?php echo $doc['rating']; ?> &nbsp;
+  <?php echo $doc['experience_years']; ?> yrs exp &nbsp;
+  <?php echo htmlspecialchars($doc['languages']); ?> &nbsp;
+  <?php echo htmlspecialchars($doc['location']); ?>
+</div>
       <div class="doc-fee">₹<?php echo $doc['consultation_fee']; ?></div>
 
            <?php if (!$doc['is_available']): ?>
@@ -111,7 +111,7 @@
 <!-- Book Appointment popup for offline-only doctors -->
 <div class="modal-overlay" id="offlineModalOverlay">
   <div class="modal-box">
-    <h2>📅 Book Appointment</h2>
+    <h2>Book Appointment</h2>
     <form action="book_appointment_process.php" method="POST">
       <input type="hidden" name="consultation_mode" value="Offline">
       <input type="hidden" name="doctor_id" id="offlineDoctorId">
@@ -147,9 +147,9 @@
 <!-- Step 1: Start Consultation popup -->
 <div class="modal-overlay" id="startConsultOverlay">
   <div class="modal-box">
-    <h2>📞 Start Consultation</h2>
+    <h2>Start Consultation</h2>
     <div class="consult-doc-preview">
-      <span class="mini-avatar">🧑‍⚕️</span>
+      <span class="mini-avatar"></span>
       <div>
         <strong id="startDoctorName"></strong>
         <span id="startDoctorMeta"></span>
@@ -180,13 +180,13 @@
       <div class="my-video-box">
         <video id="myVideoFeed" autoplay muted playsinline style="display:none;"></video>
         <div id="myVideoPlaceholder" class="my-video-placeholder">
-          <span>🙂</span>
+          <span></span>
           <p>You</p>
         </div>
       </div>
     </div>
 
-    <p class="call-status">🟢 Connected — Consultation in progress</p>
+    <p class="call-status">Connected — Consultation in progress</p>
 
     <div class="call-controls">
       <button id="toggleMicBtn" class="call-btn">🎤</button>
