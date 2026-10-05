@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Telemedicine - CareConnection+</title>
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/telemedicine.css">
+</head>
+<body>
+
+<?php include "includes/navbar.php"; ?>
+
+<section class="page-header">
+  <h1>Telemedicine</h1>
+  <p>Browse and consult with doctors virtually — find the right specialist for you.</p>
+</section>
+
+<section class="filters">
+  <input type="text" id="searchBox" placeholder="Search doctors by name or specialty...">
+    <select id="specialtyFilter">
+    <option value="all">All Specialties</option>
+    <?php foreach ($specialties as $spec): ?>
+    <option value="<?php echo htmlspecialchars($spec); ?>"><?php echo htmlspecialchars($spec); ?></option>
+    <?php endforeach; ?>
+  </select>
+  <select id="locationFilter">
+    <option value="all">All Locations</option>
+    <?php foreach ($locations as $loc): ?>
+    <option value="<?php echo htmlspecialchars($loc); ?>"><?php echo htmlspecialchars($loc); ?></option>
+    <?php endforeach; ?>
+  </select>
+</section>
+
+<section class="mode-toggle">
+  <button class="mode-btn active" data-mode="all">All</button>
+  <button class="mode-btn" data-mode="Online">Online</button>
+  <button class="mode-btn" data-mode="Offline">In-Person</button>
+</section>
+
+<section class="doctor-grid" id="doctorGrid">
+  <?php foreach ($doctors as $doc): ?>
+        <div class="doctor-card"
+         data-name="<?php echo strtolower(htmlspecialchars($doc['doctor_name'])); ?>"
+         data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
+         data-mode="<?php echo htmlspecialchars($doc['consultation_mode']); ?>"
+         data-location="<?php echo htmlspecialchars($doc['location']); ?>">
+      <div class="doc-avatar"></div>
+      <h3><?php echo htmlspecialchars($doc['doctor_name']); ?></h3>
+      <span class="doc-specialty"><?php echo htmlspecialchars($doc['specialty']); ?></span>
+
+      <div class="doc-meta">
+  <?php echo $doc['rating']; ?> &nbsp;
+  <?php echo $doc['experience_years']; ?> yrs exp &nbsp;
+  <?php echo htmlspecialchars($doc['languages']); ?> &nbsp;
+  <?php echo htmlspecialchars($doc['location']); ?>
+</div>
+      <div class="doc-fee">₹<?php echo $doc['consultation_fee']; ?></div>
+
+           <?php if (!$doc['is_available']): ?>
+        <div class="doc-footer">
+          <span class="status status-unavailable">● Unavailable</span>
+          <button class="consult-btn" disabled>Unavailable</button>
+        </div>
+      <?php elseif ($doc['consultation_mode'] === 'Offline'): ?>
+        <div class="doc-footer">
+          <span class="status status-available">● Available</span>
+          <button class="book-offline-btn"
+                  data-id="<?php echo $doc['id']; ?>"
+                  data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                  data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>">
+            Book Appointment
+          </button>
+        </div>
+      <?php elseif ($doc['consultation_mode'] === 'Online'): ?>
+        <div class="doc-footer">
+          <span class="status status-available">● Available</span>
+          <button class="consult-btn"
+                  data-id="<?php echo $doc['id']; ?>"
+                  data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                  data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
+                  data-fee="<?php echo $doc['consultation_fee']; ?>">
+            Consult Now
+          </button>
+        </div>
+      <?php else: ?>
+        <div class="doc-footer doc-footer-both">
+          <span class="status status-available">● Available</span>
+          <div class="doc-both-buttons">
+            <button class="book-offline-btn"
+                    data-id="<?php echo $doc['id']; ?>"
+                    data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                    data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>">
+              Book
+            </button>
+            <button class="consult-btn"
+                    data-id="<?php echo $doc['id']; ?>"
+                    data-name="<?php echo htmlspecialchars($doc['doctor_name']); ?>"
+                    data-specialty="<?php echo htmlspecialchars($doc['specialty']); ?>"
+                    data-fee="<?php echo $doc['consultation_fee']; ?>">
+              Consult Now
+            </button>
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+  <?php endforeach; ?>
+</section>
+
+<p class="no-results" id="noResults" style="display:none;">No doctors match your search.</p>
+
+<!-- Book Appointment popup for offline-only doctors -->
+<div class="modal-overlay" id="offlineModalOverlay">
+  <div class="modal-box">
+    <h2>Book Appointment</h2>
+    <form action="book_appointment_process.php" method="POST">
+      <input type="hidden" name="consultation_mode" value="Offline">
+      <input type="hidden" name="doctor_id" id="offlineDoctorId">
+
+      <label>Doctor</label>
+      <input type="text" id="offlineDoctorName" disabled>
+
+      <label>Date</label>
+      <input type="date" name="appointment_date" required min="<?php echo date('Y-m-d'); ?>">
+
+      <label>Time Slot</label>
+      <select name="appointment_time" required>
+        <option value="">Select Time</option>
+        <option value="09:00 AM">09:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="02:00 PM">02:00 PM</option>
+        <option value="03:00 PM">03:00 PM</option>
+        <option value="04:00 PM">04:00 PM</option>
+      </select>
+
+      <label>Reason for Visit</label>
+      <textarea name="reason" placeholder="Brief description..." rows="3"></textarea>
+
+      <div class="modal-buttons">
+        <button type="button" class="cancel-btn" id="cancelOfflineModalBtn">Cancel</button>
+        <button type="submit" class="save-btn">Confirm Booking</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Step 1: Start Consultation popup -->
+<div class="modal-overlay" id="startConsultOverlay">
+  <div class="modal-box">
+    <h2>Start Consultation</h2>
+    <div class="consult-doc-preview">
+      <span class="mini-avatar"></span>
+      <div>
+        <strong id="startDoctorName"></strong>
+        <span id="startDoctorMeta"></span>
+      </div>
+    </div>
+
+    <label>Your Name</label>
+    <input type="text" id="patientNameInput" placeholder="Enter your full name">
+
+    <label>Describe your concern</label>
+    <textarea id="patientConcernInput" placeholder="Brief description of your symptoms or concern..." rows="3"></textarea>
+
+    <div class="modal-buttons">
+      <button type="button" class="cancel-btn" id="cancelStartConsultBtn">Cancel</button>
+      <button type="button" class="save-btn" id="startVideoCallBtn">Start Video Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- Step 2: Video Call screen -->
+<div class="modal-overlay" id="videoCallOverlay">
+  <div class="video-call-box">
+    <div class="video-main">
+      <div class="doctor-video-placeholder">
+        <span class="mini-avatar big">🧑‍⚕️</span>
+        <p id="callDoctorName"></p>
+      </div>
+      <div class="my-video-box">
+        <video id="myVideoFeed" autoplay muted playsinline style="display:none;"></video>
+        <div id="myVideoPlaceholder" class="my-video-placeholder">
+          <span></span>
+          <p>You</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="call-status">Connected — Consultation in progress</p>
+
+    <div class="call-controls">
+      <button id="toggleMicBtn" class="call-btn">🎤</button>
+      <button id="toggleCameraBtn" class="call-btn">📷</button>
+      <button id="endCallBtn" class="call-btn call-btn-end">📴</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/home.js"></script>
+<script src="../js/telemedicine.js"></script>
+</body>
+</html>

@@ -2,32 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login - CareConnection+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - CareConnect+</title>
 <link rel="stylesheet" href="../css/login.css">
 </head>
+
 <body>
-  <div class="care-card">
-    <div class="care-badge">Your Health, Simplified.</div>
-    <h1>Welcome Back</h1>
-    <p class="subtitle">Login to CareConnection+</p>
 
-    <form action="../php/login_process.php" method="POST" id="loginForm">
-      <label>Unique User ID</label>
-      <input type="text" name="unique_user_id" required>
+  <main class="auth-shell">
 
-      <label>Email</label>
-      <input type="email" name="email" required>
+    <!-- Left: CareConnect introduction -->
+    <section class="brand-panel">
 
-      <label>Password</label>
-      <input type="password" name="password" required>
+      <div class="brand-content">
 
-      <button type="submit" class="care-btn">Log In</button>
-    </form>
+        <div class="brand-mark">
+          <span class="brand-dot"></span>
+          <span>CareConnect+</span>
+        </div>
 
-    <p class="switch-link">Don't have an account? <a href="register.html">Sign up here</a></p>
-    <p class="switch-link"><a href="forgot-password.php">Forgot your password?</a></p>
-  </div>
-  <script src="../js/password-toggle.js"></script>
+        <div class="brand-message">
+          <div class="care-badge">
+            Your health, thoughtfully connected.
+          </div>
+
+          <h2>Healthcare that feels a little simpler.</h2>
+
+          <p>
+            One place to stay connected with the parts of your healthcare
+            that matter to you.
+          </p>
+        </div>
+
+        <div class="health-visual" aria-hidden="true">
+          <div class="visual-circle circle-one"></div>
+          <div class="visual-circle circle-two"></div>
+          <div class="visual-line line-one"></div>
+          <div class="visual-line line-two"></div>
+          <div class="visual-center"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Right: Login -->
+    <section class="auth-panel">
+
+      <div class="care-card">
+
+        <div class="form-header">
+          <h1>Welcome Back</h1>
+          <p class="subtitle">Login to CareConnect+</p>
+        </div>
+
+        <form action="../php/login_process.php" method="POST" id="loginForm">
+
+          <div class="form-group">
+            <label for="unique_user_id">Unique User ID</label>
+            <input
+              type="text"
+              id="unique_user_id"
+              name="unique_user_id"
+              placeholder="Enter your user ID"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+            >
+          </div>
+
+          <div class="form-group">
+    <label for="password">Password</label>
+
+    <div class="password-field">
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button
+            type="button"
+            class="password-toggle"
+            id="passwordToggle"
+        >
+            Show
+        </button>
+    </div>
+</div>
+
+          <button type="submit" class="care-btn">Log In</button>
+
+        </form>
+
+        <p class="switch-link">
+          Don't have an account?
+          <a href="register.html">Sign up here</a>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
   <script src="../js/login.js"></script>
+
 </body>
 </html>

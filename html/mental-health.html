@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health - CareConnection+</title>
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/mental-health.css">
+</head>
+<body>
+
+  <!-- Dynamic Header/Navbar Container -->
+  <div id="navbarContainer"></div>
+
+  <section class="page-header">
+    <h1>Mental Health & Wellness</h1>
+    <p>Track your mood, practice mindfulness, and nurture your mental well-being daily.</p>
+  </section>
+
+  <!-- TODAY'S MOOD SECTION -->
+  <section class="mood-card" id="todayMoodSection" style="display:none;">
+    <h2>How are you feeling today?</h2>
+    <div class="mood-buttons" id="moodButtonsContainer"></div>
+    <div class="mood-message" id="moodMessageContainer"></div>
+  </section>
+
+  <div class="two-col">
+    <!-- MOOD HISTORY PANEL -->
+    <section class="panel">
+      <div class="week-nav">
+        <button id="prevWeekBtn" class="week-nav-btn">‹ Prev</button>
+        <div class="week-nav-center">
+          <span class="week-range" id="weekRangeText"></span>
+          <input type="date" id="moodDatePicker">
+        </div>
+        <button id="nextWeekBtn" class="week-nav-btn">Next ›</button>
+      </div>
+
+      <h2>Mood History</h2>
+
+      <div class="mood-chart" id="moodChartContainer"></div>
+      <div class="week-average" id="weekAverageText"></div>
+    </section>
+
+    <!-- BREATHING EXERCISE PANEL -->
+    <section class="panel">
+      <h2>Breathing Exercise</h2>
+      <p class="panel-subtext">4-7-8 technique — inhale 4s, hold 7s, exhale 8s. Repeat for calmness.</p>
+      <div class="breathing-wrap">
+        <div class="breathing-circle" id="breathingCircle">
+          <span id="breathingText">Start</span>
+        </div>
+        <button class="add-btn" id="beginBreathingBtn">Begin Exercise</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="two-col">
+    <!-- GRATITUDE JOURNAL PANEL -->
+    <section class="panel">
+      <h2>Gratitude Journal</h2>
+      <p class="panel-subtext">Write down something you're grateful for today.</p>
+      <form action="../php/gratitude_process.php" method="POST">
+        <textarea name="entry_text" placeholder="Today I am grateful for..." rows="3" required></textarea>
+        <button type="submit" class="save-btn-green">Save Entry</button>
+      </form>
+
+      <div class="journal-list" id="journalListContainer"></div>
+    </section>
+
+    <!-- DAILY AFFIRMATION & WELLNESS TIPS PANEL -->
+    <section class="panel">
+      <h2>Daily Affirmation</h2>
+      <div class="affirmation-box" id="affirmationBox">"Loading affirmation..."</div>
+      <button class="add-btn" id="newAffirmationBtn">New Affirmation</button>
+
+      <h3 class="wellness-heading">Wellness Tips</h3>
+      <div class="wellness-tips">
+        <div class="tip">Take 5-minute breaks every hour — your brain needs rest.</div>
+        <div class="tip">Limit social media to 30 mins/day for better mental clarity.</div>
+        <div class="tip">Talk to someone you trust when you're feeling overwhelmed.</div>
+        <div class="tip">Sleep and wake at the same time daily for mood stability.</div>
+        <div class="tip">Move your body for at least 20 minutes — exercise lifts mood.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CRISIS BANNER -->
+  <section class="crisis-banner">
+    <div class="crisis-content">
+        <div>
+            <h3>Need someone to talk to?</h3>
+            <p>
+                Free, confidential mental health support is available across India, 24/7.
+            </p>
+        </div>
+
+        <div class="crisis-contact">
+            <span class="crisis-label">Tele-MANAS — National Mental Health Helpline</span>
+            <strong>14416</strong>
+            <span class="crisis-alt">or 1800-89-14416</span>
+        </div>
+    </div>
+</section>
+  <script src="../js/home.js"></script>
+  <script src="../js/mental-health.js"></script>
+</body>
+</html>

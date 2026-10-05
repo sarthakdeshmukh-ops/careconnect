@@ -3,7 +3,9 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; }
 
-.page-header { padding: 40px 48px 0; }
+.page-header {
+    padding: 36px 48px 18px;
+}
 .page-header h1 { font-size: 28px; margin-bottom: 6px; }
 .page-header p { color: #6c7793; font-size: 14px; }
 
@@ -47,6 +49,20 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
 
 /* Mood bar chart */
 .mood-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 140px; gap: 10px; margin-top: 8px; }
+.mood-chart:empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fbfa;
+    border: 1px dashed #d7e8e4;
+    border-radius: 12px;
+}
+
+.mood-chart:empty::before {
+    content: "No mood entries for this week yet.";
+    font-size: 13px;
+    color: #64748b;
+}
 .mood-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
 .mood-day-emoji { font-size: 16px; margin-bottom: 6px; }
 .mood-bar { width: 26px; background: #7fb3e8; border-radius: 6px 6px 0 0; min-height: 4px; }
@@ -54,6 +70,9 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
 .mood-day-label { margin-top: 8px; font-size: 11px; color: #6c7793; }
 
 .week-average { margin-top: 18px; background: #f5f8fb; border-radius: 10px; padding: 12px; text-align: center; font-size: 13px; }
+.week-average:empty {
+    display: none;
+}
 
 /* Breathing exercise */
 .breathing-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
@@ -61,17 +80,33 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    background: #dceefb;
-    border: 2px solid #a9d6f5;
+    background: #e5f0ef;
+    border: 2px solid #8fb9b5;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    color: #2c3454;
-    font-size: 15px;
+    color: #4f8582;
+    font-size: 14px;
     transition: transform 4s ease-in-out;
 }
-.add-btn { background: #4a90d9; color: white; border: none; padding: 12px 24px; border-radius: 12px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+.add-btn {
+    background: #4f8582;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #416f6c;
+    transform: translateY(-1px);
+}
 
 /* Gratitude journal */
 .panel textarea {
@@ -84,7 +119,23 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
     resize: vertical;
     margin-bottom: 12px;
 }
-.save-btn-green { background: #4caf7d; color: white; border: none; padding: 11px 22px; border-radius: 10px; font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+.save-btn-green {
+    background: #4f8582;
+    color: #ffffff;
+    border: none;
+    padding: 10px 19px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.save-btn-green:hover {
+    background: #416f6c;
+    transform: translateY(-1px);
+}
 
 .journal-list { margin-top: 18px; max-height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-right: 4px; }
 .journal-entry { background: #f5f8fb; border-radius: 10px; padding: 12px 14px; }
@@ -93,15 +144,76 @@ body { font-family: 'Poppins', sans-serif; background: #ffffff; color: #2c3454; 
 .empty-msg { color: #6c7793; font-size: 13px; }
 
 /* Affirmation */
-.affirmation-box { background: #f0ebfb; border-radius: 12px; padding: 18px; text-align: center; font-style: italic; font-size: 14px; color: #4a3f6b; margin-bottom: 14px; line-height: 1.5; }
+.affirmation-box {
+    background: #f3f7f6;
+    border: 1px solid #e2efec;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    color: #4c5f73;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
 
 .wellness-heading { margin-top: 24px; margin-bottom: 12px; font-size: 15px; }
 .wellness-tips { display: flex; flex-direction: column; gap: 8px; }
 .tip { background: #f5f8fb; border-left: 3px solid #4caf7d; padding: 10px 14px; font-size: 13px; border-radius: 0 8px 8px 0; }
 
 /* Crisis banner */
-.crisis-banner { margin: 0 48px 40px; background: linear-gradient(135deg, #fdf0ee, #fce8e6); border-radius: 18px; padding: 24px 28px; }
-.crisis-banner h3 { color: #e05a4f; font-size: 16px; margin-bottom: 4px; }
-.crisis-banner p { font-size: 13px; color: #6c7793; margin-bottom: 16px; }
-.crisis-contacts { display: flex; gap: 40px; font-size: 13px; }
-.crisis-contacts strong { display: block; margin-bottom: 4px; }
+.crisis-banner {
+    margin: 0 48px 40px;
+    background: #fdf1ef;
+    border: 1px solid #f3d9d5;
+    border-radius: 18px;
+    padding: 24px 28px;
+}
+
+.crisis-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.crisis-banner h3 {
+    color: #a6534b;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.crisis-banner p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.crisis-contact {
+    min-width: 320px;
+    padding: 14px 20px;
+    background: #ffffff;
+    border: 1px solid #efd3cf;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.crisis-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #243b53;
+}
+
+.crisis-contact strong {
+    font-size: 20px;
+    color: #a6534b;
+    white-space: nowrap;
+}
+
+.crisis-alt {
+    font-size: 11px;
+    color: #64748b;
+    white-space: nowrap;
+}

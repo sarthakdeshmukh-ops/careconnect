@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Health - CareConnection+</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/community.css">
+</head>
+<body>
+
+    <!-- Dynamic Container for Navbar -->
+    <div id="navbar-container"></div>
+
+    <section class="page-header">
+        <h1>Community Health Portal</h1>
+        <p>Stay informed with health awareness content, vaccination info, and disease prevention tips.</p>
+    </section>
+
+    <div class="tabs">
+        <button class="tab-btn active" id="tabArticlesBtn">Health Articles</button>
+        <button class="tab-btn" id="tabDrivesBtn">Vaccination Drives</button>
+        <button class="tab-btn" id="tabPreventionBtn">Disease Prevention</button>
+        <button class="tab-btn" id="tabEmergencyBtn">Emergency Info</button>
+    </div>
+
+    <!-- ================= HEALTH ARTICLES TAB ================= -->
+    <div id="articlesTab" class="tab-panel" style="display: block;">
+        <section class="filters">
+            <input type="text" id="searchBox" placeholder="Search health articles...">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+            </select>
+        </section>
+
+        <section class="article-grid" id="articleGrid"></section>
+        <p class="no-results" id="noResults" style="display: none;">No articles match your search.</p>
+    </div>
+
+    <!-- ================= VACCINATION DRIVES TAB ================= -->
+    <div id="drivesTab" class="tab-panel" style="display: none;">
+        <section class="entries-list" id="drivesList"></section>
+    </div>
+
+    <!-- ================= DISEASE PREVENTION TAB ================= -->
+    <div id="preventionTab" class="tab-panel" style="display: none;">
+        <section class="prevention-grid" id="preventionGrid"></section>
+    </div>
+
+    <!-- ================= EMERGENCY INFO TAB ================= -->
+    <div id="emergencyTab" class="tab-panel" style="display: none;">
+        <section class="panel-block">
+            <h2>Emergency Numbers</h2>
+            <div class="emergency-grid" id="emergencyGrid"></div>
+        </section>
+
+        <section class="panel-block">
+            <h2>Nearby Hospitals (Sample Data)</h2>
+            <div class="hospital-list" id="hospitalList"></div>
+        </section>
+    </div>
+
+    <!-- ================= ARTICLE MODAL ================= -->
+    <div class="modal-overlay" id="articleModalOverlay">
+        <div class="modal-box article-modal-box">
+            <span class="modal-cat-badge" id="modalCatBadge"></span>
+            <h2 id="modalTitle"></h2>
+            <p class="modal-byline" id="modalByline"></p>
+            <div class="modal-article-body" id="modalBody"></div>
+            <div class="modal-buttons">
+                <button type="button" class="cancel-btn" id="closeArticleModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/home.js"></script>
+    <script src="../js/community.js"></script>
+</body>
+</html>

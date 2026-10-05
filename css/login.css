@@ -1,98 +1,287 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #eaf4fb;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background: #f3f7f6;
+    color: #243b53;
+    min-height: 100vh;
+}
+
+
+/* ================================
+   MAIN AUTH LAYOUT
+================================ */
+
+.auth-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* ================================
+   LEFT BRAND PANEL
+================================ */
+
+.brand-panel {
+    background: #dcebea;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
 }
 
-.care-card {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 40px;
-    max-width: 400px;
+.brand-content {
     width: 100%;
-    box-shadow: 0 10px 30px rgba(60, 90, 130, 0.15);
-    border: 2px solid #dceefb;
+    max-width: 520px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Brand */
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #243b53;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+.brand-dot {
+    width: 12px;
+    height: 12px;
+    background: #4f8582;
+    border-radius: 50%;
+}
+
+
+/* Message */
+
+.brand-message {
+    max-width: 500px;
 }
 
 .care-badge {
-    display: inline-block;
-    background: #a9d6f5;
-    color: #2c3454;
+    display: block;
+    color: #4f8582;
+    font-size: 11px;
     font-weight: 600;
-    font-size: 13px;
-    padding: 6px 14px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding-left: 12px;
+    border-left: 3px solid #4f8582;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+.brand-message h2 {
+    color: #243b53;
+    font-size: 38px;
+    line-height: 1.18;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.brand-message p {
+    color: #536b7c;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 420px;
+}
+
+
+/* Abstract healthcare visual */
+
+.health-visual {
+    width: 260px;
+    height: 260px;
+    margin-top: 70px;
+    position: relative;
+}
+
+.visual-circle {
+    position: absolute;
+    border: 1px solid rgba(79, 133, 130, 0.35);
+    border-radius: 50%;
+}
+
+.circle-one {
+    width: 220px;
+    height: 220px;
+    left: 20px;
+    top: 20px;
+}
+
+.circle-two {
+    width: 140px;
+    height: 140px;
+    left: 60px;
+    top: 60px;
+}
+
+.visual-center {
+    width: 54px;
+    height: 54px;
+    background: #4f8582;
+    border-radius: 50%;
+    position: absolute;
+    left: 103px;
+    top: 103px;
+    box-shadow: 0 10px 25px rgba(79, 133, 130, 0.20);
+}
+
+.visual-line {
+    position: absolute;
+    height: 1px;
+    background: rgba(79, 133, 130, 0.35);
+    transform-origin: left center;
+}
+
+.line-one {
+    width: 150px;
+    left: 130px;
+    top: 130px;
+    transform: rotate(35deg);
+}
+
+.line-two {
+    width: 130px;
+    left: 130px;
+    top: 130px;
+    transform: rotate(-40deg);
+}
+
+
+/* ================================
+   RIGHT LOGIN PANEL
+================================ */
+
+.auth-panel {
+    background: #f8fbfa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.care-card {
+    width: 100%;
+    max-width: 470px;
+    background: #ffffff;
+    border: 1px solid #dfe9e6;
     border-radius: 20px;
-    margin-bottom: 16px;
+    padding: 52px;
+    box-shadow: 0 18px 45px rgba(36, 59, 83, 0.08);
+}
+
+
+/* ================================
+   FORM HEADER
+================================ */
+
+.form-header {
+    margin-bottom: 20px;
 }
 
 h1 {
-    color: #2c3454;
-    font-size: 26px;
-    margin-bottom: 4px;
+    color: #243b53;
+    font-size: 34px;
+    line-height: 1.15;
+    margin-bottom: 7px;
 }
 
 .subtitle {
     color: #6c7793;
-    font-size: 14px;
-    margin-bottom: 24px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+.form-group {
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    color: #2c3454;
+    color: #243b53;
     font-size: 13px;
     font-weight: 600;
-    margin: 14px 0 6px;
+    margin-bottom: 7px;
 }
 
 input {
     width: 100%;
-    padding: 12px 14px;
-    border: 2px solid #dceefb;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #d7e4e1;
+    border-radius: 10px;
+    background: #fbfdfc;
+    color: #243b53;
     font-family: inherit;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.2s;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 input:focus {
-    border-color: #7fb8e8;
+    border-color: #5b9c99;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(91, 156, 153, 0.12);
 }
+
+
+/* ================================
+   LOGIN BUTTON
+================================ */
 
 .care-btn {
     width: 100%;
-    background: #f28b82;
-    color: white;
+    background: #4f8582;
+    color: #ffffff;
     border: none;
-    padding: 13px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
     font-family: inherit;
     font-weight: 600;
     font-size: 15px;
-    margin-top: 22px;
+    margin-top: 8px;
     cursor: pointer;
     text-align: center;
     display: block;
-    text-decoration: none;
-    transition: background 0.2s;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .care-btn:hover {
-    background: #ee7268;
+    background: #416f6c;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(79, 133, 130, 0.18);
 }
+
+
+/* ================================
+   SIGN UP LINK
+================================ */
 
 .switch-link {
     text-align: center;
@@ -102,7 +291,104 @@ input:focus {
 }
 
 .switch-link a {
-    color: #4a90d9;
+    color: #4f8582;
     font-weight: 600;
     text-decoration: none;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+    .auth-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-panel {
+        padding: 45px 30px;
+        min-height: 430px;
+    }
+
+    .brand-mark {
+        margin-bottom: 50px;
+    }
+
+    .brand-message h2 {
+        font-size: 34px;
+    }
+
+    .health-visual {
+        display: none;
+    }
+
+    .auth-panel {
+        padding: 40px 25px;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .brand-panel {
+        padding: 35px 24px;
+    }
+
+    .brand-message h2 {
+        font-size: 30px;
+    }
+
+    .brand-message p {
+        font-size: 14px;
+    }
+
+    .auth-panel {
+        padding: 30px 18px;
+    }
+
+    .care-card {
+        padding: 34px 24px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
+
+.health-visual {
+    display: none;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 70px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #4f8582;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.password-toggle:hover {
+    color: #416f6c;
 }
